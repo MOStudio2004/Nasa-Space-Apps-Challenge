@@ -150,6 +150,228 @@ body{
 }
 
 
+
+
+
+
+
+.BBM-img{
+  width: 100px;
+  object-fit: cover;
+}
+
+.BPM{
+  font-size: 1.2em;
+  font-weight: bold;
+  color: rgb(241, 147, 147);
+  margin-left: 40px;
+}
+.temp-img{
+  width: 50px;
+}
+.temp{
+margin-left: 20px;
+font-size: 1.2em;
+font-weight: bold;
+color: orange;
+}
+
+.heart-line {
+  width: 100%;
+  height: 70px;
+  overflow: visible;
+}
+
+.heart-line-path {
+  fill: none;
+  stroke: #ff5268;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+
+.heart-line-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: heart-draw 2s linear infinite;
+}
+
+@keyframes heart-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+.temperature-svg {
+  width: 90px;
+  height: 50px;
+  transform: rotate(-90deg);
+}
+
+.temperature-track,
+.temperature-progress {
+  fill: none;
+  stroke-width: 6;
+}
+
+.temperature-track {
+  stroke: rgba(104, 141, 201, 0.15);
+}
+
+.temperature-progress {
+  stroke: orange;
+  stroke-linecap: round;
+  stroke-dasharray: 251.33;
+  stroke-dashoffset: 62.83;
+  animation: temperaturePulse 2s ease-in-out infinite alternate;
+  width: 50px;
+}
+
+@keyframes temperaturePulse {
+  from {
+    stroke-dashoffset: 80;
+  }
+
+  to {
+    stroke-dashoffset: 40;
+  }
+}
+
+.temperature-value,
+.temperature-unit {
+  transform: rotate(90deg);
+  transform-origin: center;
+  fill: orange;
+}
+
+.temperature-value {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.temperature-unit {
+  font-size: 8px;
+  fill: orange;
+}
+
+
+
+
+
+
+
+
+
+
+.spo-img{
+  width: 50px;
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+.spo{
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-left: 20px;
+  color: #38bdf8;
+}
+
+
+.oxygen-wave {
+  width: 100%;
+  height: 80px;
+}
+
+.oxygen-line {
+  fill: none;
+  stroke: #7297d3;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: oxygenDraw 2s linear infinite;
+}
+
+@keyframes oxygenDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+
+
+
+
+.overall{
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.alerts{
+  border: 1px solid #7297d3;
+  background-color: #0f1f3d;
+  width: 400px;
+  height: auto;
+  min-height: 200px;
+  border-radius: 20px;
+}
+
+.astro-ov{
+  border: 1px solid #7297d3;
+  background-color: #0f1f3d;
+  width: 400px;
+  height: auto;
+  min-height: 200px;
+  border-radius: 20px;
+}
+
+
+
+
+.astro-img{
+  width:400px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+
+.para-heart-astro{
+  position: absolute;
+  z-index: 1000;
+  top: 1500px;
+  left: 30px;
+  color: rgb(236, 111, 111);
+  font-size: 0.7em;
+}
+.para-temp-astro{
+position: absolute;
+z-index: 1000;
+  top: 1630px;
+  left: 30px;
+  color: orange;
+  font-size: 0.7em;
+}
+
+.para-spo-astro{
+position: absolute;
+z-index: 1000;
+  top: 1500px;
+  left: 340px;
+  color: #38bdf8;
+  font-size: 0.7em;
+}
+
 @media (min-width: 769px) {
   .sub-section {
     flex-direction: row;
@@ -159,6 +381,22 @@ body{
   .vital-signs{
     flex-direction: row;
   }
+  .overall{
+  flex-direction: row;
+}
+.para-heart-astro{
+  top: 680px;
+  left: 730px;
+}
+.para-temp-astro{
+  top: 813px;
+  left: 730px;
+}
+
+.para-spo-astro{
+  top: 680px;
+  left: 1040px;
+}
 }
 
 
