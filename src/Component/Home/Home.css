@@ -1,5 +1,5 @@
 body{
-    background-image: url("./bg.jpg");
+    background-image: url("./BG.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -130,7 +130,7 @@ body{
 }
 
 .oxygen-level{
-  border: 1px solid #38bdf8;
+  border: 1px solid #57b5dd;
   background-color: rgba(114, 151, 211, 0.2);
     height: auto;
   min-height: 200px;
@@ -277,7 +277,7 @@ color: orange;
   font-size: 1.2em;
   font-weight: bold;
   margin-left: 20px;
-  color: #38bdf8;
+  color: #388bf8;
 }
 
 
@@ -369,17 +369,12 @@ position: absolute;
 z-index: 1000;
   top: 1250px;
   left: 340px;
-  color: #38bdf8;
+  color: #3d68b9;
   font-size: 0.7em;
 }
 
 
-.chat-title{
-  text-align: center;
-  margin-top: 90px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: whitesmoke;
-}
+
 
 .message-input{
   border: none;

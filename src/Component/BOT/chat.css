@@ -1,0 +1,138 @@
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.chat-header{
+    background-color: rgba(57, 115, 209, 0.2);
+    margin-top: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 110px;
+}
+
+.chat-title{
+  text-align: center;
+  margin-top: 90px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: whitesmoke;
+  position: relative;
+  top: -10px;
+}
+
+.chat-icon{
+    margin-left: 20px;
+}
+
+.chat-para{
+    color: #388bf8;
+    margin-left: 70px;
+    position: relative;
+    top: -30px;
+}
+
+.chat-message-center{
+    background-color: rgba(17, 60, 129, 0.2);
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    min-height: 600px;
+    position: relative;
+    top: -18px;
+    
+}
+
+.chat-input-container{
+    background-color: rgba(57, 115, 209, 0.2);
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    top: -36px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius:20px ;
+    border-bottom-right-radius:20px ;
+}
+
+.chat-input{
+    height: 50px;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgba(69, 135, 241, 0.2);
+}
+
+.chat-input::placeholder {
+    padding-left: 20px;
+    color: #4480ce;
+    font-weight: 900;
+}
+
+.chat-input:focus{
+    border: 1px solid #388bf8;
+    outline: none;
+}
+
+
+.vital-signs-chat{
+    display: none;
+}
+
+.heart-img{
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .vital-signs-chat {
+        display: flex;
+        width: 250px;
+        min-height:400px;
+        position: absolute;
+        right:12px;
+        top: 100px;
+        border-radius: 20px;
+        height: auto;
+        background-color: rgba(69, 135, 241, 0.2);
+    }
+    .heart-img-o{
+    width: 70px;
+    object-fit: contain;
+    position: relative;
+    top: -160px;
+    }
+    .menu-para{
+        position: relative;
+        left: 10px;
+        top: 16px;
+        color: whitesmoke;
+    }
+    .span-mission-status-p {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background-color: #4ade80;
+  box-shadow: 0 0 0 3px rgb(74 222 128 / 14%);
+  position: relative;
+  top: 38px;
+  margin-left: 20px;
+}
+.mission-status-p {
+  color: #0bd815;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+  top: 34px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+}
