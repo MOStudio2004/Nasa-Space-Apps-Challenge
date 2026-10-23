@@ -2,41 +2,13 @@ import logo from "../../assets/logo.png";
 import "./Home.css";
 import heart from "../../assets/heart.png";
 import BBM from "../../assets/BBM.png";
-import { mockData } from "./Mockdata";
-import { useState, useEffect } from "react";
+
 import temp from "../../assets/temp.png";
 import spo from "../../assets/spo.png";
 import astro from "../../assets/astro.jpg";
 import { Link } from "react-router";
-function Home() {
-  const [bPm, setBPm] = useState(mockData.heartRate);
+function Home({ bPm, tempe, spo2 }) {
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBPm(Math.floor(Math.random() * 21) + 60);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const [tempe, setTemp] = useState(mockData.temp);
-
-  useEffect(() => {
-    const tempChange = setInterval(() => {
-      setTemp((Math.random() * 1.5 + 36).toFixed(1));
-    }, 2000);
-
-    return () => clearInterval(tempChange);
-  }, []);
-
-  const [spo2, setSpo] = useState(mockData.spo);
-
-  useEffect(() => {
-    const spoChange = setInterval(() => {
-      setSpo(Math.floor(Math.random() * 4) + 96);
-    }, 2000);
-    return () => clearInterval(spoChange);
-  }, []);
 
   return (
     <>

@@ -68,6 +68,9 @@
     border-radius: 20px;
     border: none;
     background-color: rgba(69, 135, 241, 0.2);
+    color: white;
+    padding-left: 40px;
+    font-weight: 700;
 }
 
 .chat-input::placeholder {
@@ -88,6 +91,22 @@
 
 .heart-img{
     display: none;
+}
+
+.send-btn-chat{
+    border: none;
+   background-color: rgba(57, 115, 209, 0.2);
+    color: white;
+    position: relative;
+    right: 60px;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.send-btn-chat:hover{
+    background-color: #388bf8;
 }
 
 @media (min-width: 769px) {

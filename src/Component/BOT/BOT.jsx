@@ -2,7 +2,119 @@ import "./chat.css";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router";
 import heart from "../../assets/heart.png";
-function BOT() {
+import { useState } from "react";
+function BOT({ bPm, tempe, spo2 }) {
+  const [input , setInput] = useState("")
+
+   
+function handleResponse() {
+  setInput("")
+  const message = input.trim().toLowerCase();
+
+  // 1. Prevent empty messages
+  if (!message) {
+    return "Please enter a question.";
+  }
+
+  // 2. Greetings
+  if (/^(hi|hello|hey)[!. ]*$/.test(message)) {
+    return "Hello, astronaut! How can I assist you today?";
+  }
+
+  // 3. Health summary — check this BEFORE individual vital signs
+  const asksForSummary =
+    message.includes("health summary") ||
+    message.includes("overall health") ||
+    message.includes("summarize my health") ||
+    message.includes("full health report") ||
+    message.includes("health status") ||
+    message.includes("how is my health") ||
+    message.includes("analyze my health") ||
+    message.includes("analyze my vitals") ||
+    message.includes("overall condition") ||
+    message.includes("check my health");
+
+  if (asksForSummary) {
+    const heartStatus =
+      bPm < 60
+        ? "below the typical adult resting heart-rate range"
+        : bPm <= 100
+        ? "within the typical adult resting heart-rate range"
+        : "above the typical adult resting heart-rate range";
+
+    const tempStatus =
+      tempe < 36.1
+        ? "below the selected typical adult temperature range"
+        : tempe <= 37.2
+        ? "within the selected typical adult temperature range"
+        : tempe < 38
+        ? "slightly above the selected typical adult temperature range"
+        : "elevated and may indicate fever";
+
+    const oxygenStatus =
+      spo2 < 95
+        ? "below the typical range for most healthy adults at sea level"
+        : "within the typical range for most healthy adults at sea level";
+
+    const lines =
+      `Health Summary:\n` +
+      `Heart Rate: ${bPm} BPM — ${heartStatus}.\n` +
+      `Body Temperature: ${tempe}°C — ${tempStatus}.\n` +
+      `Blood Oxygen (SpO2): ${spo2}% — ${oxygenStatus}.\n\n`;
+
+    // Check whether any reading is outside the selected ranges
+    const abnormal =
+      bPm < 60 ||
+      bPm > 100 ||
+      tempe < 36.1 ||
+      tempe > 37.2 ||
+      spo2 < 95;
+
+    if (!abnormal) {
+      return (
+        lines +
+        "Overall Assessment: All three readings are within the selected typical adult reference ranges. This does not establish overall health or fitness for spaceflight. Consider symptoms, personal baseline, measurement quality, and mission-specific medical criteria."
+      );
+    }
+
+    return (
+      lines +
+      "Overall Assessment: At least one reading is outside the selected typical adult reference ranges. Recheck the measurements and consider symptoms and personal baseline. Follow the mission's medical protocol and notify the medical team when indicated, especially if an abnormal reading persists or symptoms occur."
+    );
+  }
+
+  // 4. Heart rate
+  if (
+    message.includes("heart rate") ||
+    message.includes("heartbeat") ||
+    message.includes("pulse") ||
+    message.includes("bpm")
+  ) {
+    return `Your current heart rate is ${bPm} BPM.`;
+  }
+
+  // 5. Body temperature
+  if (
+    message.includes("temperature") ||
+    message.includes("body temp") ||
+    message.includes("fever")
+  ) {
+    return `Your current body temperature is ${tempe}°C.`;
+  }
+
+  // 6. Blood oxygen
+  if (
+    message.includes("oxygen") ||
+    message.includes("spo2") ||
+    message.includes("blood oxygen")
+  ) {
+    return `Your current blood oxygen level is ${spo2}%.`;
+  }
+
+  // 7. Unknown question
+  return "I'm your Astronaut Health Assistant. Ask me about your heart rate, body temperature, blood oxygen, or general health summary.";
+}
+
   return (
     <>
       <header className="head-home">
@@ -25,7 +137,7 @@ function BOT() {
           <span className="mission-status-p">Stable</span>
           <div className="ch-heart"></div>
           <div className="ch-temp"></div>
-          <div ch-spo></div>
+          <div className="ch-spo"></div>
       </div>
       <div className="chat-container">
         <div className="chat-header">
@@ -74,7 +186,10 @@ function BOT() {
             type="text"
             placeholder="Type your message..."
             className="chat-input"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
           />
+          <button onClick={handleResponse} className="send-btn-chat" type="button">Send</button>
         </div>
       </div>
       <Link to="/" className="chat-btn">
