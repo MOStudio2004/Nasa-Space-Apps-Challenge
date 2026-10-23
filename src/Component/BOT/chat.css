@@ -12,7 +12,7 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width: 100%;
-    max-width: 800px;
+    max-width: 300px;
     height: 110px;
 }
 
@@ -37,9 +37,9 @@
 }
 
 .chat-message-center{
-    background-color: rgba(17, 60, 129, 0.2);
+    background-color: rgba(10, 35, 80, 0.5);
     width: 100%;
-    max-width: 800px;
+    max-width: 300px;
     height: auto;
     min-height: 600px;
     position: relative;
@@ -50,7 +50,7 @@
 .chat-input-container{
     background-color: rgba(57, 115, 209, 0.2);
     width: 100%;
-    max-width: 800px;
+    max-width: 300px;
     position: relative;
     top: -36px;
     height: 100px;
@@ -102,6 +102,15 @@
         height: auto;
         background-color: rgba(69, 135, 241, 0.2);
     }
+    .chat-message-center{
+    max-width: 800px;
+}
+.chat-header{
+    max-width: 800px;
+}
+.chat-input-container{
+    max-width: 800px;
+}
     .heart-img-o{
     width: 70px;
     object-fit: contain;
