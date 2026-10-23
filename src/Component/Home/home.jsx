@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import temp from "../../assets/temp.png";
 import spo from "../../assets/spo.png";
 import astro from "../../assets/astro.jpg";
+import { Link } from "react-router";
 function Home() {
   const [bPm, setBPm] = useState(mockData.heartRate);
 
@@ -150,7 +151,7 @@ function Home() {
         </div>
       </section>
       <div className="chat-btn-container">
-      <button className="chat-btn">
+      <Link to="/BOT" className="chat-btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="48"
@@ -179,7 +180,7 @@ function Home() {
           <path d="M31 37V42" />
           <path d="M17 42H31" />
         </svg>
-      </button>
+      </Link>
       </div>
     </>
   );
