@@ -1,5 +1,4 @@
 
-import "./bot.css";
 import { Link } from "react-router";
 function BOT() {
   return (
