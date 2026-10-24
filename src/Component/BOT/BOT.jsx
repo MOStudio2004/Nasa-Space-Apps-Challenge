@@ -8,7 +8,7 @@ function BOT({ bPm, tempe, spo2 }) {
 
    
 function handleResponse() {
-  setInput("")
+
   const message = input.trim().toLowerCase();
 
   // 1. Prevent empty messages
@@ -110,11 +110,25 @@ function handleResponse() {
   ) {
     return `Your current blood oxygen level is ${spo2}%.`;
   }
-
+//7. thanks
+if(message.includes("thanks") || message.includes("thank you") || message.includes("thx")){
+  return "Your welcome astro , enjoy your journey"
+}
   // 7. Unknown question
   return "I'm your Astronaut Health Assistant. Ask me about your heart rate, body temperature, blood oxygen, or general health summary.";
 }
 
+const [messages , setMessages] = useState([]);
+
+function sendMessage (){
+  const userMessage = input.trim();
+  if(!userMessage){
+    return
+  }
+  const botReply = handleResponse();
+  setMessages((prev) => [...prev , {text:userMessage , sender:"user"}, {text:botReply,sender:"bot"}]);
+  setInput("")
+}
   return (
     <>
       <header className="head-home">
@@ -179,7 +193,11 @@ function handleResponse() {
           </p>
         </div>
         <hr />
-        <div className="chat-message-center"></div>
+        <div className="chat-message-center">
+         {messages.map((message , index) => (
+          <p key={index} className={message.sender === "user" ? "user-message" : "bot-message"}>{message.text}</p>
+         ))}
+        </div>
         <hr />
         <div className="chat-input-container">
           <input
@@ -189,7 +207,7 @@ function handleResponse() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button onClick={handleResponse} className="send-btn-chat" type="button">Send</button>
+          <button onClick={sendMessage} className="send-btn-chat" type="button">Send</button>
         </div>
       </div>
       <Link to="/" className="chat-btn">
