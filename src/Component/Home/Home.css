@@ -398,7 +398,7 @@ z-index: 1000;
   border-radius: 20px;
   position: fixed;
   z-index: 1000;
-    right: 24px;
+    right: 1px;
   top: 90%;
   transform: translateY(-50%);
 }
@@ -429,6 +429,9 @@ z-index: 1000;
 .para-spo-astro{
   top: 680px;
   left: 600px;
+}
+.chat-btn{
+  right: 24px;
 }
 }
 
