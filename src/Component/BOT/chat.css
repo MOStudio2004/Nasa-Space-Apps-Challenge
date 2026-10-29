@@ -135,6 +135,9 @@
     left: 160px;
 }
 
+
+
+
 @media (min-width: 769px) {
     .vital-signs-chat {
         display: flex;
