@@ -1,4 +1,3 @@
-import logo from "../../assets/logo.png";
 import "./Home.css";
 import heart from "../../assets/heart.png";
 import BBM from "../../assets/BBM.png";
@@ -10,18 +9,11 @@ import { Link } from "react-router";
 function Home({ bPm, tempe, spo2 }) {
   return (
     <>
-      <header className="head-home">
-        <div className="brand">
-          <img className="title-img" src={logo} alt="logo" />
-          <h1 className="title">
-            Astro<span className="title-span">Health</span>
-          </h1>
-        </div>
-        <div className="name" aria-label="Mission status: active, Artemis II">
-          <span className="span-mission-status" aria-hidden="true" />
-          <span className="mission-status">Mission Active</span>
-          <span className="span-mission">Artemis II</span>
-        </div>
+      <header className="arvin-nav-h">
+        <Link to="/" className="arvin-brand-h">
+          <span className="arvin-brand-mark-h">✧</span> Astro<span>Health</span>
+        </Link>
+        <span className="arvin-nav-context-h">MISSION INTELLIGENCE</span>
       </header>
 
       <section className="sub-section">
@@ -40,8 +32,8 @@ function Home({ bPm, tempe, spo2 }) {
       <section className="vital-signs">
         <div className="heart-rate-card">
           <img src={BBM} alt="BBM" className="BBM-img" />
-          <h3 className="heart-title">  Heart Rate</h3>
-         
+          <h3 className="heart-title"> Heart Rate</h3>
+
           <p className="BPM">
             {bPm} <span className="bbm-span">BPM</span>
           </p>
@@ -136,14 +128,6 @@ function Home({ bPm, tempe, spo2 }) {
           <p className="para-heart-astro">❤️ {bPm} BPM</p>
           <p className="para-temp-astro">🌡️ {tempe}°C</p>
           <p className="para-spo-astro"> 🫁 {spo2}%</p>
-        </div>
-        <div className="Chat-model">
-          <h3 className="chat-title">Ask me about your body signals</h3>
-          <input
-            placeholder="Type your message"
-            type="text"
-            className="message-input"
-          />
         </div>
       </section>
       <div className="chat-btn-container">
