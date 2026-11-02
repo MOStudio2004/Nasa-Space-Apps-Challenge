@@ -1,0 +1,134 @@
+.auth-page {
+  min-height: 100vh;
+  display: flow-root;
+
+  background-image: url("../../assets/BG\ PC\ LOGIN.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.login-header{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.star{
+    color: #70ecff;
+}
+
+.login-title{
+    color: whitesmoke;
+}
+
+.health{
+    color: #58c8ed;
+}
+
+.para-login{
+  color: #71899c;
+    font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.login-subhead{
+    color: whitesmoke;
+    font-size: 35px;
+}
+
+.welcome-message{
+    color: rgb(187, 187, 187);
+    font-size: 20px;
+}
+
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+
+    background: rgba(0, 12, 24, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(0, 192, 240, 0.25);
+    border-radius: 16px;
+    padding: 30px;
+    width: fit-content;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Username-input{
+    padding: 10px;
+    border-radius: 10px;
+    width: 300px;
+    border: 1px solid rgba(0, 192, 240, 0.411);
+    background:linear-gradient(155deg, #0d1924, #08111b 70%);
+    caret-color: #58c8ed;
+}
+
+.Username-input:focus {
+    outline: none;
+    border: 1px solid rgba(20, 196, 240, 0.829);
+    box-shadow: 0 0 10px rgba(20, 196, 240, 0.3);
+}
+.password{
+    padding: 10px;
+    border-radius: 10px;
+    width: 300px;
+    border: 1px solid rgba(0, 192, 240, 0.411);
+    background:linear-gradient(155deg, #0d1924, #08111b 70%);
+    caret-color: #58c8ed;
+}
+
+.password:focus{
+    outline: none;
+    border: 1px solid rgba(20, 196, 240, 0.829);
+    box-shadow: 0 0 10px rgba(20, 196, 240, 0.3);
+}
+
+.Login-btn{
+    width: 320px ;
+    padding: 12px;
+    border-radius: 10px;
+    color: rgb(7, 7, 7);
+    background-color: #58c8ed;
+    border: none;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.Login-btn:hover{
+    background-color: #196077;
+}
+
+.new-acc{
+    color: whitesmoke;
+    font-size: 17px;
+}
+
+.reg-link{
+    text-decoration: none;
+    color: #58c8ed;
+    font-size: 18px;
+}
+
+.reg-link:visited{
+    text-decoration: none;
+}
+
+@media (min-width: 769px) {
+
+}
