@@ -1,13 +1,83 @@
 
 import Home from "./Component/Home/home.jsx";
 //import BOT from "./Component/BOT/BOT.jsx";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route,useLocation } from "react-router";
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "motion/react";
 import { mockData } from "./Component/Home/Mockdata.js";
 import Login from './Component/Auth/Login.jsx'
 import Reg from './Component/Auth/Reg.jsx'
 import Protect from './Component/Protect route/ProtectedRoutes.jsx'
 import BotPage from './Component/BOT/BotPage.jsx'
+import PageTransition from './Component/PageTransision/PageTransision.jsx'
+
+function AnimatedRoutes({ bPm, tempe, spo2 }) {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes
+        location={location}
+        key={location.pathname}
+      >
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              <Login />
+            </PageTransition>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <PageTransition>
+              <Login />
+            </PageTransition>
+          }
+        />
+
+        <Route
+          path="/Register"
+          element={
+            <PageTransition>
+              <Reg />
+            </PageTransition>
+          }
+        />
+
+        <Route element={<Protect />}>
+          <Route
+            path="/Home"
+            element={
+              <PageTransition>
+                <Home
+                  bPm={bPm}
+                  tempe={tempe}
+                  spo2={spo2}
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/BOT"
+            element={
+              <PageTransition>
+                <BotPage
+                  bPm={bPm}
+                  tempe={tempe}
+                  spo2={spo2}
+                />
+              </PageTransition>
+            }
+          />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+}
 function App() {
     const [bPm, setBPm] = useState(mockData.heartRate);
   
@@ -37,27 +107,14 @@ function App() {
       }, 2000);
       return () => clearInterval(spoChange);
     }, []);
+
 return (
   <BrowserRouter>
-    <Routes>
-      
-      <Route path="/" element={<Login />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/Register" element={<Reg />} />
-
-      
-      <Route element={<Protect />}>
-        <Route
-          path="/Home"
-          element={<Home bPm={bPm} tempe={tempe} spo2={spo2} />}
-        />
-
-        <Route
-          path="/BOT"
-          element={<BotPage bPm={bPm} tempe={tempe} spo2={spo2} />}
-        />
-      </Route>
-    </Routes>
+    <AnimatedRoutes
+      bPm={bPm}
+      tempe={tempe}
+      spo2={spo2}
+    />
   </BrowserRouter>
 );
 }
