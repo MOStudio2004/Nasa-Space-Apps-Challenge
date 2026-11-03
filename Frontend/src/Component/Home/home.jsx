@@ -14,7 +14,7 @@ const [user, setUser] = useState(null);
 useEffect(() => {
   async function getUser() {
     try{
-     const response = await fetch("http://localhost:3000/api/auth/me" , {credentials:"include"});
+     const response = await fetch("/api/auth/me" , {credentials:"include"});
      if(!response.ok){
       return
      }
