@@ -1,11 +1,13 @@
 
 import Home from "./Component/Home/home.jsx";
-import BOT from "./Component/BOT/BOT.jsx";
+//import BOT from "./Component/BOT/BOT.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { useState, useEffect } from "react";
 import { mockData } from "./Component/Home/Mockdata.js";
 import Login from './Component/Auth/Login.jsx'
 import Reg from './Component/Auth/Reg.jsx'
+import Protect from './Component/Protect route/ProtectedRoutes.jsx'
+import BotPage from './Component/BOT/BotPage.jsx'
 function App() {
     const [bPm, setBPm] = useState(mockData.heartRate);
   
@@ -35,16 +37,29 @@ function App() {
       }, 2000);
       return () => clearInterval(spoChange);
     }, []);
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/Home" element={<Home bPm={bPm} tempe={tempe} spo2={spo2} />} />
-        <Route path="/BOT" element={<BOT bPm={bPm} tempe={tempe} spo2={spo2} />} />
-        <Route path="/" element={<Login />} />
-        <Route path="/Register" element={<Reg />} />
-      </Routes>
-    </BrowserRouter>
-  );
+return (
+  <BrowserRouter>
+    <Routes>
+      
+      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/Register" element={<Reg />} />
+
+      
+      <Route element={<Protect />}>
+        <Route
+          path="/Home"
+          element={<Home bPm={bPm} tempe={tempe} spo2={spo2} />}
+        />
+
+        <Route
+          path="/BOT"
+          element={<BotPage bPm={bPm} tempe={tempe} spo2={spo2} />}
+        />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 }
 
 export default App;

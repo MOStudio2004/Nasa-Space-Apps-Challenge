@@ -189,7 +189,7 @@ export default function BOT({ bPm, tempe, spo2, status, messages, onSendMessage,
   }
   const voiceReady = demo || (onStartListening && onStopListening);
   return <main className="arvin" data-status={effectiveStatus}>
-    <header className="arvin-nav"><Link to="/" className="arvin-brand"><span className="arvin-brand-mark">✧</span> Astro<span>Health</span></Link><span className="arvin-nav-context">MISSION INTELLIGENCE</span><Link to="/" className="arvin-back">← Dashboard</Link></header>
+    <header className="arvin-nav"><Link to="/Home" className="arvin-brand"><span className="arvin-brand-mark">✧</span> Astro<span>Health</span></Link><span className="arvin-nav-context">MISSION INTELLIGENCE</span><Link to="/Home" className="arvin-back">← Dashboard</Link></header>
     <div className="arvin-workspace">
       <section className="arvin-stage" aria-label="A.R.V.I.N. visualization">
         <div className="arvin-stage-top"><span className="arvin-eyebrow">HUMAN EXPLORATION / AI COMPANION</span><span className="arvin-version">CORE / 01</span></div>

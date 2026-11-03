@@ -67,15 +67,17 @@ html, body {
     max-width: 85%;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: content-box;
 }
 
 .Username-input{
     padding: 10px;
     border-radius: 10px;
-    width: 300px;
+    width: 320px;
     border: 1px solid rgba(0, 192, 240, 0.411);
     background:linear-gradient(155deg, #0d1924, #08111b 70%);
     caret-color: #58c8ed;
+    margin-bottom: 10px;
 }
 
 .Username-input:focus {
@@ -86,10 +88,11 @@ html, body {
 .password{
     padding: 10px;
     border-radius: 10px;
-    width: 300px;
+    width: 320px;
     border: 1px solid rgba(0, 192, 240, 0.411);
     background:linear-gradient(155deg, #0d1924, #08111b 70%);
     caret-color: #58c8ed;
+    margin-bottom: 10px;
 }
 
 .password:focus{
@@ -130,5 +133,16 @@ html, body {
 }
 
 @media (min-width: 769px) {
+.Username-input{
+    margin-right: 10px;
+}
 
+.password{
+    margin-right: 10px;
+}
+
+.login-box{
+    flex-direction: column;
+    
+}
 }

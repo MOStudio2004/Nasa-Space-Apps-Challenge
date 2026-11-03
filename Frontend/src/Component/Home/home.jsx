@@ -6,7 +6,30 @@ import temp from "../../assets/temp.png";
 import spo from "../../assets/spo.png";
 import astro from "../../assets/astro.png";
 import { Link } from "react-router";
+import { useState , useEffect } from "react";
 function Home({ bPm, tempe, spo2 }) {
+
+const [user, setUser] = useState(null);
+
+useEffect(() => {
+  async function getUser() {
+    try{
+     const response = await fetch("http://localhost:3000/api/auth/me" , {credentials:"include"});
+     if(!response.ok){
+      return
+     }
+
+     const data = await response.json()
+
+     setUser(data.user)
+    }catch (error){
+     console.error(error)
+    }
+  }
+  getUser()
+}, []);
+
+
   return (
     <>
       <header className="arvin-nav-h">
@@ -18,7 +41,7 @@ function Home({ bPm, tempe, spo2 }) {
 
       <section className="sub-section">
         <h2 className="sub-head">
-          Hello, Astro <span>Mission health dashboard.</span>
+          Hello, {user?.username.toUpperCase() || "Astro"} <span>Mission health dashboard.</span>
         </h2>
         <div className="message">
           <img className="heart" src={heart} alt="heart" />
