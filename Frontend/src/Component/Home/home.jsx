@@ -7,6 +7,7 @@ import spo from "../../assets/spo.png";
 import astro from "../../assets/astro.png";
 import { Link } from "react-router";
 import { useState , useEffect } from "react";
+import { useNavigate } from "react-router";
 function Home({ bPm, tempe, spo2 }) {
 
 const [user, setUser] = useState(null);
@@ -29,6 +30,24 @@ useEffect(() => {
   getUser()
 }, []);
 
+const navigate = useNavigate();
+async function handleLogout() {
+  try {
+    const response = await fetch("/api/auth/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Error while logging out");
+    }
+
+    setUser(null);
+    navigate("/", { replace: true });
+  } catch (error) {
+    console.error(error);
+  }
+}
 
   return (
     <>
@@ -37,6 +56,7 @@ useEffect(() => {
           <span className="arvin-brand-mark-h">✧</span> Astro<span>Health</span>
         </Link>
         <span className="arvin-nav-context-h">MISSION INTELLIGENCE</span>
+        <button type="button" onClick={handleLogout} className="log-out">Log out</button>
       </header>
 
       <section className="sub-section">
@@ -148,9 +168,9 @@ useEffect(() => {
       <section className="overall">
         <div className="astro-ov">
           <img className="astro-img" src={astro} alt="astro" />
-          <p className="para-heart-astro">❤️ {bPm} BPM</p>
-          <p className="para-temp-astro">🌡️ {tempe}°C</p>
-          <p className="para-spo-astro"> 🫁 {spo2}%</p>
+          <p className="para-heart-astro"><img src={BBM} alt="BBM" className="astro-reading-icon" /> {bPm} BPM</p>
+          <p className="para-temp-astro"><img src={temp} alt="temp" className="astro-reading-icon" /> {tempe}°C</p>
+          <p className="para-spo-astro"> <img className="astro-reading-icon" src={spo} alt="spo" /> {spo2}%</p>
         </div>
       </section>
       <div className="chat-btn-container">
