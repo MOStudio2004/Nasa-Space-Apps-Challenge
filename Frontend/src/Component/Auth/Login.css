@@ -160,14 +160,17 @@ html, body {
     font-weight: bold;
 }
 
-.log-out{
-    border: none;
-    color: whitesmoke;
-    background-color: #0e1e30;
-    margin-right: 10px;
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
+.log-out {
+  border: none;
+  color: whitesmoke;
+  background-color: #0e1e30;
+  margin-right: 20px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .log-out:hover{
