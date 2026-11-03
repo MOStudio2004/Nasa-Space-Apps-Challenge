@@ -29,12 +29,12 @@ const response = await fetch(
 
 if (!response.ok) {
   setMessage(data.message);
-  setStatus(data.status);
+  setStatus("error");
   return;
 }
 
 setMessage(data.message);
-setStatus(data.status);
+setStatus("success");
 navigate("/Home", { replace: true });
 
   } catch (error) {
