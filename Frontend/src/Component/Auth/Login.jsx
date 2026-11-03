@@ -1,8 +1,44 @@
 
 import "./Login.css";
 import { Link } from "react-router";
-
+import { useState } from "react";
+import { useNavigate } from "react-router";
 function Login() {
+const [username, setUsername] = useState("");
+const [password, setPassword] = useState("");
+const [message, setMessage] = useState("");
+const navigate = useNavigate();
+  async function handleLogin(e) {
+  e.preventDefault();
+
+  try {
+const response = await fetch(
+  "http://localhost:3000/api/auth/login",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify({ username, password })
+  }
+);
+
+    const data = await response.json();
+
+if (!response.ok) {
+  setMessage(data.message);
+  return;
+}
+
+setMessage(data.message);
+navigate("/Home", { replace: true });
+
+  } catch (error) {
+    console.error("Network error:", error);
+    setMessage("Connection failed. Please try again.");
+  }
+}
   return (
     <>
     <div className="auth-page">
@@ -18,11 +54,14 @@ function Login() {
       </div>
 
       <div className="login-box">
+        <form onSubmit={handleLogin}>
         <input
           className="Username-input"
           type="text"
           required
           placeholder="Username"
+                      value={username}
+  onChange={(e) => setUsername(e.target.value)}
         />
 
         <input
@@ -30,14 +69,17 @@ function Login() {
           type="password"
           required
           placeholder="Password"
+                      value={password}
+  onChange={(e) => setPassword(e.target.value)}
         />
 
         <button className="Login-btn" type="submit">
           Login
         </button>
-
+        <p>{message}</p>
+         </form>
         <p className="new-acc">Need an Account?</p>
-
+ 
         <Link to="/Register" className="reg-link" href="">
           Create Account ----&gt;
         </Link>

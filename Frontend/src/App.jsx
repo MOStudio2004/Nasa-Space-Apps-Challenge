@@ -38,9 +38,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home bPm={bPm} tempe={tempe} spo2={spo2} />} />
+        <Route path="/Home" element={<Home bPm={bPm} tempe={tempe} spo2={spo2} />} />
         <Route path="/BOT" element={<BOT bPm={bPm} tempe={tempe} spo2={spo2} />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/Register" element={<Reg />} />
       </Routes>
     </BrowserRouter>
