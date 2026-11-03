@@ -23,7 +23,7 @@ body {
   letter-spacing: -0.7px;
   text-decoration: none;
   color: whitesmoke;
-  margin-left: 10px;
+  margin-left: 30px;
 
 }
 
@@ -500,6 +500,23 @@ body {
 .chat-btn:hover {
   background-color: #18305c;
 }
+
+.log-out {
+  border: none;
+  color: whitesmoke;
+  background-color: #0e1e30;
+  margin-right: 20px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.log-out:hover{
+background-color: #08111b;
+}
 @media (min-width: 769px) {
   .sub-section {
     flex-direction: row;
@@ -540,5 +557,26 @@ body {
   .mission-status,
   .span-mission {
     font-size: 0.72rem;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .arvin-nav-h {
+    gap: 8px;
+  }
+
+  .arvin-brand-h {
+    margin-left: 12px;
+  }
+
+  .arvin-nav-context-h {
+    margin-right: 0;
+  }
+
+  .log-out {
+    margin-right: 12px;
+    padding: 10px;
   }
 }
