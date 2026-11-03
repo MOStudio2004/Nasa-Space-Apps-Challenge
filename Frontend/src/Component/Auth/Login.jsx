@@ -8,6 +8,7 @@ const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [message, setMessage] = useState("");
 const navigate = useNavigate();
+const [status , setStatus] = useState("");
   async function handleLogin(e) {
   e.preventDefault();
 
@@ -28,10 +29,12 @@ const response = await fetch(
 
 if (!response.ok) {
   setMessage(data.message);
+  setStatus(data.status);
   return;
 }
 
 setMessage(data.message);
+setStatus(data.status);
 navigate("/Home", { replace: true });
 
   } catch (error) {
@@ -76,7 +79,7 @@ navigate("/Home", { replace: true });
         <button className="Login-btn" type="submit">
           Login
         </button>
-        <p>{message}</p>
+        <p className={status === "success"? "success":"error"}>{message}</p>
          </form>
         <p className="new-acc">Need an Account?</p>
  
