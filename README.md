@@ -26,7 +26,7 @@ These values are simulated and update automatically to demonstrate how a live mo
 
 **AI Health Assistant**
 
-The application includes a chatbot powered by Google's Gemini API, allowing crew members to interact with an AI assistant directly from the dashboard.
+The application includes a chatbot powered by Google's Gemini API Named (A.R.V.I.N), allowing crew members to interact with an AI assistant directly from the dashboard.
 
 **Responsive Interface**
 
