@@ -63,7 +63,7 @@ navigate("/Home", { replace: true });
           className="Username-input"
           type="text"
           required
-          placeholder="Username"
+          placeholder="CrewId"
                       value={crewId}
   onChange={(e) => setUsername(e.target.value)}
         />
