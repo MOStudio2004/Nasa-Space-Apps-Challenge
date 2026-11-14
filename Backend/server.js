@@ -84,7 +84,7 @@ app.post("/api/auth/register", async (req, res) => {
 
   if(!cleanUsername.includes("_nasa")){
         return res.status(400).json({
-      message: "Invalid CrewId or password format",
+      message: "CrewId should end with _nasa",
     });
   }
 
@@ -133,7 +133,7 @@ app.post("/api/auth/login", async (req, res) => {
     });
   }
 
-  
+
   try {
     const result = await pool.query(
       "SELECT id, username, password_hash FROM users WHERE username = $1",
