@@ -61,6 +61,16 @@ The project gave me an opportunity to bring together the technologies I've been 
 
 My focus was on building a functional full-stack application, connecting multiple services, handling authentication, and designing an interface around a specific use case.
 
+## NASA Research Reference
+
+This project references NASA's Human Research Program (HRP), which studies astronaut health and performance during space missions.
+
+I used this research as a reference for the health monitoring concept behind Astro Health Monitor.
+
+The application currently uses simulated vital signs and does not use real NASA medical datasets.
+
+Source: https://www.nasa.gov/hrp/
+
 ## 🔭 Future Improvements
 
 There are several features I'd like to explore further:
