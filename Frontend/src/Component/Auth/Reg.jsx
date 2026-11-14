@@ -72,7 +72,8 @@ setMessage(data.message);
         <button className="Login-btn" type="submit">
           Create Account
         </button>
-        <p>{message}</p>
+                <p className={status === "success"? "success":"error"}>{message}</p>
+
         </form>
         <p className="new-acc">Already Have Account?</p>
         <Link className="reg-link" to="/login">
