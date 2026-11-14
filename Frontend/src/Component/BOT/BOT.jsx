@@ -130,9 +130,7 @@ function Core({ status, audioLevel }) {
   </Canvas>}</CoreBoundary>;
 }
 
-function MicIcon() {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3" /><path d="M6 11v1a6 6 0 0 0 12 0v-1M12 18v3M9 21h6" /></svg>;
-}
+
 
 /** Controlled integration: messages [{id, role, content}], status, audioLevel (0..1).
  * onSendMessage(text) delegates responses/audio entirely to the parent.
@@ -181,13 +179,8 @@ export default function BOT({ bPm, tempe, spo2, status, messages, onSendMessage,
     catch { if (mounted.current) { setError("Message could not be sent. Please try again."); setInput(value); } }
     finally { if (mounted.current) setSending(false); }
   }
-  async function toggleListening() {
-    setError("");
-    if (demo) { setLocalStatus((prev) => prev === "listening" ? "idle" : "listening"); return; }
-    try { await (effectiveStatus === "listening" ? onStopListening?.() : onStartListening?.()); }
-    catch { if (mounted.current) setError("Voice control is unavailable. Please try again."); }
-  }
-  const voiceReady = demo || (onStartListening && onStopListening);
+
+ 
   return <main className="arvin" data-status={effectiveStatus}>
     <header className="arvin-nav"><Link to="/Home" className="arvin-brand"><span className="arvin-brand-mark">✧</span> Astro<span>Health</span></Link><span className="arvin-nav-context">MISSION INTELLIGENCE</span><Link to="/Home" className="arvin-back">← Dashboard</Link></header>
     <div className="arvin-workspace">
@@ -204,8 +197,8 @@ export default function BOT({ bPm, tempe, spo2, status, messages, onSendMessage,
         <div className="arvin-log" ref={log} role="log" aria-live="polite" aria-relevant="additions text" aria-label="Messages">{conversation.length === 0 && <p className="arvin-empty">Your conversation starts here.</p>}{conversation.map((message, index) => { const user = message.role === "user" || message.sender === "user"; return <article key={message.id ?? index} className={`arvin-message ${user ? "arvin-message-user" : ""}`}><span className="arvin-message-label">{user ? "YOU" : "A.R.V.I.N."}</span><p dir="auto">{message.content ?? message.text}</p></article>; })}{busy && <div className="arvin-thinking" role="status"><i /><i /><i /><span>Processing your message</span></div>}</div>
         <div className="arvin-composer-area">{conversation.length <= 1 && <div className="arvin-prompts">{["Review my readings", "Prepare a mission briefing"].map((prompt) => <button type="button" key={prompt} disabled={busy || (!demo && !onSendMessage)} onClick={() => send(prompt)}>{prompt} ↗</button>)}</div>}
           {error && <p className="arvin-error" role="alert">{error}</p>}
-          <form className="arvin-composer" onSubmit={(event) => { event.preventDefault(); send(input); }}><label className="arvin-sr-only" htmlFor="arvin-message">Message A.R.V.I.N.</label><textarea id="arvin-message" rows="2" maxLength={4000} value={input} onChange={(event) => setInput(event.target.value)} placeholder="What’s on your mind, astronaut?" onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); send(input); } }} /><div className="arvin-composer-controls"><button className="arvin-mic" type="button" aria-label={demo ? "Preview listening animation (no microphone recording)" : effectiveStatus === "listening" ? "Stop listening" : "Start listening"} aria-pressed={effectiveStatus === "listening"} disabled={!voiceReady || busy} onClick={toggleListening}><MicIcon /></button><span>{demo ? "Voice preview · no recording" : voiceReady ? "Voice controls connected" : "Voice not connected"}</span><button className="arvin-send" type="submit" disabled={!input.trim() || busy || (!demo && !onSendMessage)} aria-label="Send message">↑</button></div></form>
-          <p className="arvin-disclosure">{demo ? "Local UI demo · No AI response or audio is generated." : "AI and audio are managed by your connected application."}</p>
+          <form className="arvin-composer" onSubmit={(event) => { event.preventDefault(); send(input); }}><label className="arvin-sr-only" htmlFor="arvin-message">Message A.R.V.I.N.</label><textarea id="arvin-message" rows="2" maxLength={4000} value={input} onChange={(event) => setInput(event.target.value)} placeholder="What’s on your mind, astronaut?" onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); send(input); } }} /><div className="arvin-composer-controls"> <button className="arvin-send" type="submit" disabled={!input.trim() || busy || (!demo && !onSendMessage)} aria-label="Send message">↑</button></div></form>
+          
         </div>
       </section>
     </div><footer className="arvin-footer"><span>A.R.V.I.N. / ASTRONAUT SUPPORT INTERFACE</span><span>DESIGNED FOR THE JOURNEY AHEAD <b>✧</b></span></footer>
