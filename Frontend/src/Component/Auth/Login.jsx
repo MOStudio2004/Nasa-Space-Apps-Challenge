@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 function Login() {
-const [username, setUsername] = useState("");
+const [crewId, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [message, setMessage] = useState("");
 const navigate = useNavigate();
@@ -21,7 +21,7 @@ const response = await fetch(
       "Content-Type": "application/json"
     },
     credentials: "include",
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({ crewId, password })
   }
 );
 
@@ -63,7 +63,7 @@ navigate("/Home", { replace: true });
           type="text"
           required
           placeholder="Username"
-                      value={username}
+                      value={crewId}
   onChange={(e) => setUsername(e.target.value)}
         />
 

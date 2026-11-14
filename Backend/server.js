@@ -62,15 +62,15 @@ app.get("/api/db_test", async (req, res) => {
 });
 
 app.post("/api/auth/register", async (req, res) => {
-  const { username, password } = req.body ?? {};
+  const { crewId, password } = req.body ?? {};
 
-  if (typeof username !== "string" || typeof password !== "string") {
+  if (typeof crewId !== "string" || typeof password !== "string") {
     return res.status(400).json({
       message: "Invalid input",
     });
   }
 
-  const cleanUsername = username.trim().toLowerCase();
+  const cleanUsername = crewId.trim().toLowerCase();
 
   if (
     !/^[a-z0-9_]{3,30}$/.test(cleanUsername) ||
@@ -78,7 +78,13 @@ app.post("/api/auth/register", async (req, res) => {
     Buffer.byteLength(password, "utf8") > 72
   ) {
     return res.status(400).json({
-      message: "Invalid username or password format",
+      message: "Invalid CrewId or password format",
+    });
+  }
+
+  if(!cleanUsername.includes("_nasa")){
+        return res.status(400).json({
+      message: "Invalid CrewId or password format",
     });
   }
 
@@ -112,14 +118,22 @@ app.post("/api/auth/register", async (req, res) => {
 });
 
 app.post("/api/auth/login", async (req, res) => {
-  const { username, password } = req.body ?? {};
-  if (typeof username !== "string" || typeof password !== "string") {
+  const { crewId, password } = req.body ?? {};
+  if (typeof crewId !== "string" || typeof password !== "string") {
     return res.status(400).json({
       message: "Invalid input",
     });
   }
-  const cleanUsername = username.trim().toLowerCase();
+  const cleanUsername = crewId.trim().toLowerCase();
 
+
+    if(!cleanUsername.includes("_nasa")){
+        return res.status(400).json({
+      message: "Invalid CrewId or password format",
+    });
+  }
+
+  
   try {
     const result = await pool.query(
       "SELECT id, username, password_hash FROM users WHERE username = $1",

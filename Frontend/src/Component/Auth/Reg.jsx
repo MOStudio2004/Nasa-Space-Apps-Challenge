@@ -3,7 +3,7 @@ import "./Login.css";
 import { Link } from "react-router";
 import { useState } from "react";
 function Reg() {
-const [username, setUsername] = useState("");
+const [crewId, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [message, setMessage] = useState("");
 async function handleRegister(e) {
@@ -17,7 +17,7 @@ async function handleRegister(e) {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ crewId, password })
       }
     );
 
@@ -55,8 +55,8 @@ setMessage(data.message);
           className="Username-input"
           type="text"
           required
-          placeholder="Username"
-            value={username}
+          placeholder="CrewId"
+            value={crewId}
   onChange={(e) => setUsername(e.target.value)}
         />
 
