@@ -1,16 +1,79 @@
-# React + Vite
+# Astro Health Monitor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A space-inspired health monitoring dashboard built for the NASA Space Apps Challenge 2026.**
 
-Currently, two official plugins are available:
+Astro Health Monitor is a full-stack web application that explores how astronauts could monitor their health during space missions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The idea was to build more than a dashboard displaying numbers. I wanted to create an environment where crew members could log in, track their vital signs, and interact with an AI assistant, all from one interface.
 
-## React Compiler
+The application combines a React frontend, an Express backend, PostgreSQL for crew accounts, and Google's Gemini API for AI-powered conversations.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛰️ What It Does
 
-## Expanding the ESLint configuration
+**Crew Authentication**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Crew members can create an account using a unique Crew ID and password. Authentication is handled through the backend using bcrypt for password hashing and JWT tokens stored in HTTP-only cookies.
+
+**Health Monitoring Dashboard**
+
+The dashboard displays three essential health indicators:
+
+- Heart Rate (BPM)
+- Body Temperature (°C)
+- Blood Oxygen Saturation (SpO₂)
+
+These values are simulated and update automatically to demonstrate how a live monitoring interface could work.
+
+**AI Health Assistant**
+
+The application includes a chatbot powered by Google's Gemini API, allowing crew members to interact with an AI assistant directly from the dashboard.
+
+**Responsive Interface**
+
+The interface is designed to work on desktop and mobile screens, making the dashboard accessible across different devices.
+
+## 🛠️ Tech Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | React, Vite, React Router, CSS |
+| Backend | Node.js, Express.js |
+| Database | PostgreSQL, Neon |
+| Authentication | JWT, bcrypt, HTTP-only cookies |
+| AI Integration | Google Gemini API |
+| Deployment | Vercel |
+
+## ⚙️ How It Works
+
+The React frontend communicates with the Express backend through REST API endpoints.
+
+The backend handles account registration, login, authentication, database operations, and requests to the Gemini API.
+
+PostgreSQL stores crew account information, while JWT authentication protects routes that require an authenticated user.
+
+Health readings are currently generated on the frontend using simulated data rather than physical medical sensors.
+
+## 🌍 Why I Built This
+
+I built Astro Health Monitor as part of the NASA Space Apps Challenge 2026.
+
+The project gave me an opportunity to bring together the technologies I've been learning and apply them to a space-related challenge.
+
+My focus was on building a functional full-stack application, connecting multiple services, handling authentication, and designing an interface around a specific use case.
+
+## 🔭 Future Improvements
+
+There are several features I'd like to explore further:
+
+- Integrating real sensor data instead of simulated readings.
+- Adding historical health data and visualizations.
+- Introducing alerts for abnormal vital signs.
+- Expanding the AI assistant with more mission-specific capabilities.
+
+## ⚠️ Disclaimer
+
+Astro Health Monitor is an educational prototype. All vital signs are simulated, and the AI assistant is not intended to provide medical diagnoses or replace professional medical advice.
+
+---
+
+Built for the **NASA Space Apps Challenge 2026**.
