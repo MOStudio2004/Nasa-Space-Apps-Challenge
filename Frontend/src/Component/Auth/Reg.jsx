@@ -6,6 +6,7 @@ function Reg() {
 const [crewId, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [message, setMessage] = useState("");
+const [status, setStatus] = useState("")
 async function handleRegister(e) {
   e.preventDefault();
 
@@ -24,16 +25,19 @@ async function handleRegister(e) {
     const data = await response.json();
 
 if (!response.ok) {
+  setStatus("error");
   setMessage(data.message);
   return;
 }
 
+setStatus("success");
 setMessage(data.message);
 
   } catch (error) {
-    console.error("Network error:", error);
-    setMessage("Connection failed. Please try again.");
-  }
+  console.error("Network error:", error);
+  setStatus("error");
+  setMessage("Connection failed. Please try again.");
+}
 }
   return (
     <>

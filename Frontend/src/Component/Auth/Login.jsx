@@ -38,9 +38,10 @@ setStatus("success");
 navigate("/Home", { replace: true });
 
   } catch (error) {
-    console.error("Network error:", error);
-    setMessage("Connection failed. Please try again.");
-  }
+  console.error("Network error:", error);
+  setStatus("error");
+  setMessage("Connection failed. Please try again.");
+}
 }
   return (
     <>
